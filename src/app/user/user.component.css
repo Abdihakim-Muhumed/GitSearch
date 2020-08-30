@@ -1,0 +1,12 @@
+h1{
+    background-color: rgb(80, 133, 133);
+
+}
+#repos{
+    border-left: solid red;
+}
+img{
+    border-radius: 50%;
+    height: 5%;
+    max-width: auto;
+}
