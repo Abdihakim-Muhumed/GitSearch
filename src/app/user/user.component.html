@@ -2,17 +2,39 @@
     <h1><img src="assets/logo.png" style="height : 50px; max-width: auto;"> GitSearch</h1>
 </div>
 <div class="container">
+    
     <div class="jumbotron">
         <nav>
             <h2 class="text-center">Search Github users and repositories</h2>
             <hr>
-            <app-search-form></app-search-form> 
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <label for="userName">Username:</label>
+                        <input id="userName" type="search" name="userName" #username>
+                        <button class="btn btn-success" (click)="searchUser(username.value, $event)">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <label for="name">Repository:</label>
+                        <input id="name" type="text" name="name">
+                        <button class="btn btn-success">Search</button>
+                    </form>
+                </div>
+            </div>
         </nav>       
     </div>   
-    <div class="row" *ngFor = "let user of users; let i = index">
-        <div class="col-md-3 " id="profile">
-            <img src="assets/dp1.jpg" class="img-circle center dp" alt="Abdihakim" >
-            <h5>{{user.userName}}</h5>
+    <div class="row">
+        <div class="col-md-4 " id="profile">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="text-center">User Info</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">{{user1.userName}} {{user.userName}} </p>
+                </div>
+            </div>
         </div>
         <div class="col-md-4" id="repos">
             <h5 class="text-center">Repositories</h5>

@@ -1,4 +1,4 @@
 export class User {
-constructor(public userName: string, public id: number, public repos: string[]){}
+constructor(public userName: string, public email: string, public image: string,public repos: string[]){}
 
 }

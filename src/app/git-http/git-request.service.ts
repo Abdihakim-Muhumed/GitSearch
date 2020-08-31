@@ -10,56 +10,56 @@ import { Repository} from '../repository';
 })
 export class GitRequestService {
  user: User;
- repository: Repository[];  
+ userRepo: Repository;  
 
   constructor(private http: HttpClient) {
-    this.user= new User("",1,[""]);
-    this.repository = [new Repository("","","")];
-   }
-   userRequest(){
+    this.user= new User("","","",[""]);
+    this.userRepo= new Repository("","","");
+  }
+  getUser(username: string){
     interface ApiResponse{
-      login:string;
-      id:number;
+      login: string;
+      email: string;
+      imageUrl: string;
     }
     let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response=>{
-        this.user.userName = response.login
-        this.user.id = response.id
+      let apiURL = `https://api.github.com/users/${username}?access_token=${environment.myKey}`
+      this.http.get<ApiResponse>(apiURL).toPromise().then(
+        response =>{
+          this.user.userName= response.login
+          this.user.email = response.email
+          this.user.image = response.imageUrl
+        },
+        error=>{
+          console.log('Username not found')
+  
+          reject(error)
 
-        resolve()
+        })      
+      return promise
+    })
+  }
+  getUserRepo(username:string){
+    interface ApiResponse{
+      name:string
+      html_url:string
+      description: string
+    }
+    let promise = new Promise((resolve,reject)=>{
+      let apiURL = `https://api.github.com/users/${username}/repos?access_token=${environment.myKey}`
+      this.http.get<ApiResponse>(apiURL).toPromise().then(
+        (response: any) => { // Success
+          this.userRepo = response;
+          
+          resolve();
       },
       error=>{
-        this.user.userName = "Abdihakim"
-        this.user.id = 1
+        console.log('No repository found')
 
         reject(error)
       })
-    })
+    })   
     return promise
   }
-  repoRequest(){
-    interface ApiResponse{
-      userName:string;
-      name: string;
-      description: string;
-    }
-    let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response=>{
-        this.repository[1].userName = response.userName
-        this.repository[1].name = response.name
-        this.repository[1].description = response.description
 
-        resolve()
-      },
-      error=>{
-        this.repository[1].userName = "Abdihakim"
-        this.repository[1].name = "Goals"
-        this.repository[1].description = "A web application for my goals"
-
-        reject(error)
-      })
-    })
-    return promise
-  }
-}
-
+}     
