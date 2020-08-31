@@ -9,19 +9,16 @@
             <app-search-form></app-search-form> 
         </nav>       
     </div>   
-    <div class="row">
+    <div class="row" *ngFor = "let user of users; let i = index">
         <div class="col-md-3 " id="profile">
             <img src="assets/dp1.jpg" class="img-circle center dp" alt="Abdihakim" >
-            <h5>Abdihakim Muhumed</h5>
+            <h5>{{user.userName}}</h5>
         </div>
         <div class="col-md-4" id="repos">
             <h5 class="text-center">Repositories</h5>
             <hr>
-            <ul>
-                <li>Goals</li>
-                <li>Quotes</li>
-                <li>Foods</li>
-                <li>HelloWorld</li>
+            <ul *ngFor = "let repo of user.repos">
+                <li>{{repo}}</li>
             </ul>
         </div>
         <div class="col-md-4">

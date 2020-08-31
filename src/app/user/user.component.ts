@@ -8,9 +8,7 @@ import { User } from '../user';
 })
 export class UserComponent implements OnInit {
   users : User[]=[new User("Abdihakim",new Image(10,10),["Goals","Quotes"]),new User("Welicho33",new Image(),["Foods"])];
-
   constructor() { }
-
   ngOnInit(): void {
   }
 
