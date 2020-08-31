@@ -4,9 +4,13 @@ h1{
 }
 #repos{
     border-left: solid red;
+    
 }
-img{
+img.dp{
+    float: center;
     border-radius: 50%;
-    height: 5%;
+    height: 180px;
     max-width: auto;
+    align-content: center;
 }
+

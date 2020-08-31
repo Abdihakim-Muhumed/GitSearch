@@ -1,23 +1,31 @@
-<h1>GitSearch</h1>
-<div class="container-fluid">
-    <div>
-        
-    </div>
-    <h2 class="text-center">Search Github users and repositories</h2>
-    <hr>
+<div id="header">
+    <h1><img src="assets/logo.png" style="height : 50px; max-width: auto;"> GitSearch</h1>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <nav>
+            <h2 class="text-center">Search Github users and repositories</h2>
+            <hr>
+            <app-search-form></app-search-form> 
+        </nav>       
+    </div>   
     <div class="row">
-        <div class="col-md-3 ">
-            <img src="assets/dp1.jpg" class="img-circle float-left" alt="Abdihakim" > 
+        <div class="col-md-3 " id="profile">
+            <img src="assets/dp1.jpg" class="img-circle center dp" alt="Abdihakim" >
             <h5>Abdihakim Muhumed</h5>
         </div>
         <div class="col-md-4" id="repos">
-            <h5>Repositories</h5>
+            <h5 class="text-center">Repositories</h5>
+            <hr>
             <ul>
                 <li>Goals</li>
                 <li>Quotes</li>
                 <li>Foods</li>
                 <li>HelloWorld</li>
             </ul>
+        </div>
+        <div class="col-md-4">
+            <app-repository></app-repository>
         </div>
     </div>
 </div>

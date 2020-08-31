@@ -7,7 +7,7 @@ import { User } from '../user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  users : User[]=[new User("Abdihakim",["Goals","Quotes"]),new User("Welicho33",["Foods"])];
+  users : User[]=[new User("Abdihakim",new Image(10,10),["Goals","Quotes"]),new User("Welicho33",new Image(),["Foods"])];
 
   constructor() { }
 
