@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { GitRequestService } from '../git-http/git-request.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,15 @@ import { User } from '../user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  users : User[]=[new User("Abdihakim",new Image(10,10),["Goals","Quotes"]),new User("Welicho33",new Image(),["Foods"])];
-  constructor() { }
-  ngOnInit(): void {
+  user: User;
+  users : User[]=[new User("Abdihakim",1,["Goals","Quotes"]),new User("Welicho33",2,["Foods"])];
+  constructor(private gitService: GitRequestService) { 
+   
+  }
+  ngOnInit() {
+    this.gitService.userRequest()
+    this.user= this.gitService.user;
+    
   }
 
 }
