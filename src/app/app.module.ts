@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { RepositoryComponent } from './repository/repository.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { HighliteDirective } from './highlite.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     RepositoryComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    HighliteDirective
   ],
   imports: [
     BrowserModule,
